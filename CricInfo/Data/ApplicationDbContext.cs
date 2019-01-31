@@ -22,5 +22,8 @@ namespace CricInfo.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<CricInfo.Models.Team> Team { get; set; }
+        public DbSet<Player> Players { get; set; }
     }
 }

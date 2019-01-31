@@ -1,0 +1,123 @@
+﻿@model CricInfo.Models.Team
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Captain" class="control-label"></label>
+                <input asp-for="Captain" class="form-control" />
+                <span asp-validation-for="Captain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Players" class="control-label"></label>
+                <table class="table" style="align-items:center">
+                    <thead>
+                        <tr>
+                            
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Age
+                            </th>
+                            <th>
+                                Shirt Number
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            
+                            <td>
+                                <input type="text" id="p1" name="p1" class="form-control" placeholder="Name Here" />
+                                <input type="text" id="p2" name="p2" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p3" name="p3" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p4" name="p4" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p5" name="p5" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p6" name="p6" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p7" name="p7" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p8" name="p8" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p9" name="p9" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p10" name="p10" class="form-control" placeholder="Name Here"/>
+                                <input type="text" id="p11" name="p11" class="form-control" placeholder="Name Here"/>
+                            </td>
+                            <td>
+                                <input type="number" id="pa1" name="pa1" class="form-control" placeholder="Age Here" />
+                                <input type="number" id="pa2" name="pa2" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa3" name="pa3" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa4" name="pa4" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa5" name="pa5" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa6" name="pa6" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa7" name="pa7" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa8" name="pa8" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa9" name="pa9" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa10" name="pa10" class="form-control" placeholder="Age Here"/>
+                                <input type="number" id="pa11" name="pa11" class="form-control" placeholder="Age Here"/>
+                            </td>
+                            <td>
+                                <input type="number" id="ps1" name="ps1" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps2" name="ps2" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps3" name="ps3" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps4" name="ps4" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps5" name="ps5" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps6" name="ps6" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps7" name="ps7" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps8" name="ps8" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps9" name="ps9" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps10" name="ps10" class="form-control" placeholder="SHirt Number Here"/>
+                                <input type="number" id="ps11" name="ps11" class="form-control" placeholder="SHirt Number Here"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span asp-validation-for="Players" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="MatchPlayed" class="control-label"></label>
+            <input asp-for="MatchPlayed" class="form-control" />
+            <span asp-validation-for="MatchPlayed" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MatchWin" class="control-label"></label>
+            <input asp-for="MatchWin" class="form-control" />
+            <span asp-validation-for="MatchWin" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MatchLoose" class="control-label"></label>
+            <input asp-for="MatchLoose" class="form-control" />
+            <span asp-validation-for="MatchLoose" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MatchTie" class="control-label"></label>
+            <input asp-for="MatchTie" class="form-control" />
+            <span asp-validation-for="MatchTie" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

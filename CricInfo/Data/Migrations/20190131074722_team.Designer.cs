@@ -11,9 +11,10 @@ using System;
 namespace CricInfo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190131074722_team")]
+    partial class team
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,29 +70,6 @@ namespace CricInfo.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("CricInfo.Models.Player", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Age");
-
-                    b.Property<int>("MatchesPlayed");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<int>("ShirtNumber");
-
-                    b.Property<int>("TeamId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("CricInfo.Models.Team", b =>
@@ -228,14 +206,6 @@ namespace CricInfo.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CricInfo.Models.Player", b =>
-                {
-                    b.HasOne("CricInfo.Models.Team", "TeamRef")
-                        .WithMany("Players")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CricInfo.Models.Team", b =>
