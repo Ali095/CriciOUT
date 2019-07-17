@@ -30,6 +30,7 @@ namespace CricInfo.Data
         public DbSet<Bowl> Bowls { get; set; }
         public DbSet<CricInfo.Models.Umpire> Umpire { get; set; }
         public DbSet<CricInfo.Models.Ground> Ground { get; set; }
+        public DbSet<CricInfo.Models.GroundReservation> GroundReservation { get; set; }
 
     }
 }

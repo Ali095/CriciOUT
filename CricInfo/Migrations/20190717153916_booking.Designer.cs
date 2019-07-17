@@ -12,8 +12,8 @@ using System;
 namespace CricInfo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190716225705_scorecard")]
-    partial class scorecard
+    [Migration("20190717153916_booking")]
+    partial class booking
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,6 +112,26 @@ namespace CricInfo.Migrations
                     b.ToTable("Ground");
                 });
 
+            modelBuilder.Entity("CricInfo.Models.GroundReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("GroundId");
+
+                    b.Property<DateTime>("ReservationDate");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroundId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GroundReservation");
+                });
+
             modelBuilder.Entity("CricInfo.Models.Match", b =>
                 {
                     b.Property<int>("id")
@@ -176,14 +196,18 @@ namespace CricInfo.Migrations
 
                     b.Property<int>("Age");
 
-                    b.Property<int>("BowlId");
+                    b.Property<int?>("BowlId");
+
+                    b.Property<string>("HowOut");
 
                     b.Property<int>("MatchesPlayed");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int>("ScoreId");
+                    b.Property<string>("OutBy");
+
+                    b.Property<int?>("ScoreId");
 
                     b.Property<int>("ShirtNumber");
 
@@ -196,7 +220,8 @@ namespace CricInfo.Migrations
                     b.HasIndex("BowlId");
 
                     b.HasIndex("ScoreId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ScoreId] IS NOT NULL");
 
                     b.HasIndex("TeamId");
 
@@ -387,6 +412,18 @@ namespace CricInfo.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CricInfo.Models.GroundReservation", b =>
+                {
+                    b.HasOne("CricInfo.Models.Ground", "GroundRef")
+                        .WithMany()
+                        .HasForeignKey("GroundId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CricInfo.Models.ApplicationUser", "UserRef")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("CricInfo.Models.Match", b =>
                 {
                     b.HasOne("CricInfo.Models.Player", "Bowler")
@@ -434,13 +471,11 @@ namespace CricInfo.Migrations
                 {
                     b.HasOne("CricInfo.Models.Bowl", "Bowl")
                         .WithMany()
-                        .HasForeignKey("BowlId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BowlId");
 
                     b.HasOne("CricInfo.Models.Score", "Score")
                         .WithOne("Player")
-                        .HasForeignKey("CricInfo.Models.Player", "ScoreId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CricInfo.Models.Player", "ScoreId");
 
                     b.HasOne("CricInfo.Models.Team", "TeamRef")
                         .WithMany("Players")

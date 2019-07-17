@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CricInfo.Migrations
 {
-    public partial class scorecard : Migration
+    public partial class booking : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -249,16 +249,45 @@ namespace CricInfo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GroundReservation",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    GroundId = table.Column<int>(nullable: false),
+                    ReservationDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GroundReservation", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GroundReservation_Ground_GroundId",
+                        column: x => x.GroundId,
+                        principalTable: "Ground",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GroundReservation_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Players",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Age = table.Column<int>(nullable: false),
-                    BowlId = table.Column<int>(nullable: false),
+                    BowlId = table.Column<int>(nullable: true),
+                    HowOut = table.Column<string>(nullable: true),
                     MatchesPlayed = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    ScoreId = table.Column<int>(nullable: false),
+                    OutBy = table.Column<string>(nullable: true),
+                    ScoreId = table.Column<int>(nullable: true),
                     ShirtNumber = table.Column<int>(nullable: false),
                     TeamId = table.Column<int>(nullable: false),
                     role = table.Column<int>(nullable: false)
@@ -271,13 +300,13 @@ namespace CricInfo.Migrations
                         column: x => x.BowlId,
                         principalTable: "Bowls",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Players_Scores_ScoreId",
                         column: x => x.ScoreId,
                         principalTable: "Scores",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Players_Team_TeamId",
                         column: x => x.TeamId,
@@ -406,6 +435,16 @@ namespace CricInfo.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_GroundReservation_GroundId",
+                table: "GroundReservation",
+                column: "GroundId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GroundReservation_UserId",
+                table: "GroundReservation",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Matches_BowlerId",
                 table: "Matches",
                 column: "BowlerId");
@@ -459,7 +498,8 @@ namespace CricInfo.Migrations
                 name: "IX_Players_ScoreId",
                 table: "Players",
                 column: "ScoreId",
-                unique: true);
+                unique: true,
+                filter: "[ScoreId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_TeamId",
@@ -488,6 +528,9 @@ namespace CricInfo.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "GroundReservation");
 
             migrationBuilder.DropTable(
                 name: "Matches");

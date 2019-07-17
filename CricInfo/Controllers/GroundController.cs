@@ -44,7 +44,7 @@ namespace CricInfo.Controllers
             return View(ground);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         // GET: Ground/Create
         public IActionResult Create()
         {
@@ -56,11 +56,12 @@ namespace CricInfo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Address,contact,Availabity")] Ground ground)
+        [Authorize]
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,contact,Availabity,Location")] Ground ground)
         {
             if (ModelState.IsValid)
             {
+                //ground.Location = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.5794752334814!2d73.08140601468567!3d33.56430075073355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df93326d8b392b%3A0x37caff05aea67b2c!2sAyub+Park+Cricket+Ground!5e0!3m2!1sen!2s!4v1563389464647!5m2!1sen!2s";
                 _context.Add(ground);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -12,11 +12,14 @@ namespace CricInfo.Models
         public int Id { get; set; }
 
         [Required]
-        public String  Name { get; set; }
+        public string  Name { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]
         public string contact { get; set; }
         public bool Availabity { get; set; }
+
+        [Display(Name ="Location URL")]
+        public string Location { get; set; }
     }
 }
