@@ -5,6 +5,23 @@
     <UserSecretsId>aspnet-CricInfo-7DFD84AF-672F-4AA0-BF0A-AB8128817841</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190131074722_team.cs" />
+    <Compile Remove="Data\Migrations\20190131074722_team.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190131184717_player.cs" />
+    <Compile Remove="Data\Migrations\20190131184717_player.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190415020734_scorecard.cs" />
+    <Compile Remove="Data\Migrations\20190415020734_scorecard.Designer.cs" />
+    <Compile Remove="Migrations\20190716224954_scorecard.cs" />
+    <Compile Remove="Migrations\20190716224954_scorecard.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Match\ScoreCardDesign.cshtml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
@@ -17,6 +34,14 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Match\ScoreCardDesign.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CricInfo.Models.Match>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalOvers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CurrentOver)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CurrentScore)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CurrentWickets)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatTeam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BowlTeam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroundRef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UmpireRef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UmpireRef2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalOvers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentOver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentWickets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatTeam.Captain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BowlTeam.Captain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroundRef.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UmpireRef.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UmpireRef2.Contact)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a> |
+                <a asp-action="ScoreCard" asp-route-id="@item.id">View Scorecard</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -25,5 +25,11 @@ namespace CricInfo.Data
 
         public DbSet<CricInfo.Models.Team> Team { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<Score> Scores { get; set; }
+        public DbSet<Bowl> Bowls { get; set; }
+        public DbSet<CricInfo.Models.Umpire> Umpire { get; set; }
+        public DbSet<CricInfo.Models.Ground> Ground { get; set; }
+
     }
 }

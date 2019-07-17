@@ -81,6 +81,10 @@ namespace CricInfo.Controllers
                 var p9 = HttpContext.Request.Form["p9"];
                 var p10 = HttpContext.Request.Form["p10"];
                 var p11 = HttpContext.Request.Form["p11"];
+                var p12 = HttpContext.Request.Form["p12"];
+                var p13 = HttpContext.Request.Form["p13"];
+                var p14 = HttpContext.Request.Form["p14"];
+                var p15 = HttpContext.Request.Form["p15"];
 
                 int pa1 = int.Parse(HttpContext.Request.Form["pa1"]);
                 var pa2 = int.Parse(HttpContext.Request.Form["pa2"]);
@@ -93,6 +97,10 @@ namespace CricInfo.Controllers
                 var pa9 = int.Parse(HttpContext.Request.Form["pa9"]);
                 var pa10 = int.Parse(HttpContext.Request.Form["pa10"]);
                 var pa11 = int.Parse(HttpContext.Request.Form["pa11"]);
+                var pa12 = int.Parse(HttpContext.Request.Form["pa12"]);
+                var pa13 = int.Parse(HttpContext.Request.Form["pa13"]);
+                var pa14 = int.Parse(HttpContext.Request.Form["pa14"]);
+                var pa15 = int.Parse(HttpContext.Request.Form["pa15"]);
 
                 var ps1 = int.Parse(HttpContext.Request.Form["ps1"]);
                 var ps2 = int.Parse(HttpContext.Request.Form["ps2"]);
@@ -105,6 +113,11 @@ namespace CricInfo.Controllers
                 var ps9 = int.Parse(HttpContext.Request.Form["ps9"]);
                 var ps10 = int.Parse(HttpContext.Request.Form["ps10"]);
                 var ps11 = int.Parse(HttpContext.Request.Form["ps11"]);
+                var ps12 = int.Parse(HttpContext.Request.Form["ps12"]);
+                var ps13 = int.Parse(HttpContext.Request.Form["ps13"]);
+                var ps14 = int.Parse(HttpContext.Request.Form["ps14"]);
+                var ps15 = int.Parse(HttpContext.Request.Form["ps15"]);
+
 
                 Player pl1 = new Player
                 {
@@ -184,9 +197,39 @@ namespace CricInfo.Controllers
                     ShirtNumber = ps11,
                     TeamId = team.Id
                 };
+                Player pl12 = new Player
+                {
+                    Name = p12,
+                    Age = pa12,
+                    ShirtNumber = ps12,
+                    TeamId = team.Id
+                };
+                Player pl13= new Player
+                {
+                    Name = p13,
+                    Age = pa13,
+                    ShirtNumber = ps13,
+                    TeamId = team.Id
+                };
+                Player pl14 = new Player
+                {
+                    Name = p14,
+                    Age = pa14,
+                    ShirtNumber = ps14,
+                    TeamId = team.Id
+                };
+                Player pl15 = new Player
+                {
+                    Name = p15,
+                    Age = pa15,
+                    ShirtNumber = ps15,
+                    TeamId = team.Id
+                };
+                
                 _context.Players.Add(pl1); _context.Add(pl2); _context.Add(pl3); _context.Add(pl4); _context.Add(pl5);
                 _context.Add(pl6); _context.Add(pl7); _context.Add(pl8); _context.Add(pl9); _context.Add(pl10);
-                _context.Add(pl11);
+                _context.Add(pl11); _context.Add(pl12); _context.Add(pl13); _context.Add(pl14);
+                _context.Add(pl15);
                 await _context.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));

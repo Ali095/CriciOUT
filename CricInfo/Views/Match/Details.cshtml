@@ -1,0 +1,61 @@
+﻿@model CricInfo.Models.Match
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Match</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalOvers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalOvers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Result)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Result)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BatTeam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BatTeam.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BowlTeam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BowlTeam.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GroundRef)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GroundRef.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UmpireRef)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UmpireRef.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UmpireRef2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UmpireRef2.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

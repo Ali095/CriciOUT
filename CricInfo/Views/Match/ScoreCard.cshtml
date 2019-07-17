@@ -1,0 +1,40 @@
+﻿@model CricInfo.Models.Match
+@{
+    ViewData["Title"] = "ScoreCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ScoreCard</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ScoreCard" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Striker" class="control-label"></label>
+                <select asp-for="Striker" class="form-control" asp-items="ViewBag.Striker"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NonStriker" class="control-label"></label>
+                <select asp-for="NonStriker" class="form-control" asp-items="ViewBag.NonStriker"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bowler" class="control-label"></label>
+                <select asp-for="Bowler" class="form-control" asp-items="ViewBag.Bowler"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
