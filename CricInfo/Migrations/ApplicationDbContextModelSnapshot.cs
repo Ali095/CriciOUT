@@ -100,6 +100,8 @@ namespace CricInfo.Migrations
 
                     b.Property<bool>("Availabity");
 
+                    b.Property<string>("Location");
+
                     b.Property<string>("Name")
                         .IsRequired();
 
@@ -109,6 +111,26 @@ namespace CricInfo.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ground");
+                });
+
+            modelBuilder.Entity("CricInfo.Models.GroundReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("GroundId");
+
+                    b.Property<DateTime>("ReservationDate");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroundId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GroundReservation");
                 });
 
             modelBuilder.Entity("CricInfo.Models.Match", b =>
@@ -389,6 +411,18 @@ namespace CricInfo.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CricInfo.Models.GroundReservation", b =>
+                {
+                    b.HasOne("CricInfo.Models.Ground", "GroundRef")
+                        .WithMany()
+                        .HasForeignKey("GroundId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CricInfo.Models.ApplicationUser", "UserRef")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("CricInfo.Models.Match", b =>

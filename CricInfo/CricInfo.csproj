@@ -16,6 +16,10 @@
     <Compile Remove="Data\Migrations\20190415020734_scorecard.Designer.cs" />
     <Compile Remove="Migrations\20190716224954_scorecard.cs" />
     <Compile Remove="Migrations\20190716224954_scorecard.Designer.cs" />
+    <Compile Remove="Migrations\20190717153119_booking-ground.cs" />
+    <Compile Remove="Migrations\20190717153119_booking-ground.Designer.cs" />
+    <Compile Remove="Migrations\20190717165339_only-date.cs" />
+    <Compile Remove="Migrations\20190717165339_only-date.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -35,7 +35,14 @@
         <dd>
             @Html.DisplayFor(model => model.Availabity)
         </dd>
+
     </dl>
+</div>
+<div>
+    <div>
+        <iframe src="@Model.Location" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        @*<iframe width="450" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=33.624064,73.05216&amp;key=AIzaSyDF5lu9AaDT6XlLmMoFb3g0yJvVNGAWlZo"></iframe>*@
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
