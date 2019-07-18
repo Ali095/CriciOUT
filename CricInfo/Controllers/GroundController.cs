@@ -44,7 +44,7 @@ namespace CricInfo.Controllers
             return View(ground);
         }
 
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         // GET: Ground/Create
         public IActionResult Create()
         {
@@ -56,7 +56,7 @@ namespace CricInfo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name,Address,contact,Availabity,Location")] Ground ground)
         {
             if (ModelState.IsValid)
