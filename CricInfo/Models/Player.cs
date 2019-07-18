@@ -13,6 +13,7 @@ namespace CricInfo.Models
         [Required]
         public int Id { get; set; }
         [Required]
+        [Range(15, 50, ErrorMessage = "Player Age should be in range between 15 - 50")]
         public int Age { get; set; }
         [Required]
         public string Name { get; set; }

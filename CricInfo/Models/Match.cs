@@ -18,6 +18,7 @@ namespace CricInfo.Models
         [ForeignKey("Ground")]
         public virtual Ground GroundRef { get; set; }
         [Required]
+        [Range(20.0, 90.0, ErrorMessage = "Overs should be in range between 20 - 90")]
         public int TotalOvers { get; set; }
         public double CurrentOver { get; set; }
         public Player Striker { get; set; }
